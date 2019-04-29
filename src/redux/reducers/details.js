@@ -28,10 +28,10 @@ export default function(state = initialState,action){
             case FEED_DETAILS:
             return {
                 ...state,
-                height:action.payload.height,
-                weight:action.payload.weight,
-                stats:action.payload.stats,
-                type:action.payload.types,
+                height:action.payload.height/10,
+                weight:action.payload.weight/10,
+                stats:action.payload.stats.reverse(),
+                type:action.payload.types.reverse(),
                 id:action.payload.id
             }
             case GET_DETAILS_FAIL:
