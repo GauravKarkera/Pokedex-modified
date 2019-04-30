@@ -45,8 +45,9 @@ class Page extends Component {
 
         {this.props.isFetched_details ? (
           <Details data={this.props} />
-        ) : ((isFetched ? (
-          <p>Loading...</p>
+        ) : (
+          (isFetched ? (
+        <p>Loading...</p>
 
         ) : (
             <React.Fragment>

@@ -24,21 +24,27 @@ export default class Details extends Component {
       ]
     };
 
-    let nameForBarchart = (
-      stats.map(ele => {
+    function nameForBarchart (){
+       stats.map(ele => {
         return (
           data.labels.push(ele.stat.name)
         )
-      }));
+      })};
 
-      let dataForBarchart=(
+    //   for (key in stats.stat.name) {
+    //     if (obj.hasOwnProperty(key)){
+    //       data.labels.push(stats.stat.name)
+    //     } 
+    // }
+
+      function dataForBarchart(){
       stats.map(ele => {
         return (
           data.datasets[0].data.push(ele.base_stat)
   
         )
       })
-    )
+      }
     
     
 
@@ -50,36 +56,24 @@ export default class Details extends Component {
           }.png`})`, backgroundRepeat: "no-repeat"
       }} className="col-md-4 offset-4">
         <h5>Height:{height} Meters</h5>&nbsp;<h5>Weight:{weight} kg</h5>
-        {dataForBarchart}
-        {nameForBarchart}
+        {dataForBarchart()}
+        {nameForBarchart()}
         <Chart type="bar" data={data} />
 
-        {/* {stats.map(ele => {
-          let x = ele.stat.name
-          return (
-            data.labels.push(x)
-
-          )
-        })}
-        {stats.map(ele => {
-          let x = ele.base_stat
-          return (
-            data.datasets[0].data.push(x)
-
-          )
-        })} */}
-        {/* <ul>
-      {stats.map(ele =>{
-          return <li>{ele.stat.name}:{ele.base_stat}</li>
-      })}
-      </ul> */}
-        <ul>
+        
+      <p>Type:</p>
+        
           {type.map(elem => {
-            return <Button label={elem.type.name} className="p-button-info" />
+            return (<div>
+             
+            <badge label={elem.type.name} style={{backgroundColor:"green",padding:"10px 10px"}} >{elem.type.name}</badge><br/><br/>
+            </div>
+            )
             //  <li>{elem.type.name}</li>
 
           })}
-        </ul>
+        <br/>
+       
         <p><button onClick={backToPrev}>Back</button></p>
 
       </Card>
